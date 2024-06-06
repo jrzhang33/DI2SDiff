@@ -20,7 +20,7 @@ We employ the identical preprocessing method as outlined in the work by [Qin et 
 
 2. Prepare dataset
 
-Please download the dataset and run the [preprocessing code]{\url{https://github.com/microsoft/robustlearn/tree/main/ddlearn}}. Once you have processed the data, move the resulting file to the data folder. For example, the processed file for the USC-HAD dataset with 20% of the data used for training, the target set to 1, and a seed value of 1 should be saved as `data/uschad/uschad_crosssubject_rawaug_rate0.2_t0_seed1_scalernorm.pkl`.
+Please download the dataset and run the [preprocessing code](https://github.com/microsoft/robustlearn/tree/main/ddlearn). Once you have processed the data, move the resulting file to the data folder. For example, the processed file for the USC-HAD dataset with 20% of the data used for training, the target set to 1, and a seed value of 1 should be saved as `data/uschad/uschad_crosssubject_rawaug_rate0.2_t0_seed1_scalernorm.pkl`.
 
 
 
