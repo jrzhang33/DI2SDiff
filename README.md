@@ -6,7 +6,7 @@ This repo is the official implementation of  "Diverse Intra- and Inter-Domain Ac
 
 # Datasets
 
-We employ the identical preprocessing method as outlined in the work by [Qin et al DDLearn]{https://github.com/microsoft/robustlearn/tree/main/ddlearn} on three publicly available HAR datasets, namely [DSADS]{https://archive.ics.uci.edu/dataset/256/daily+and+sports+activities}, [PAMAP2]{https://archive.ics.uci.edu/dataset/231/pamap2+physical+activity+monitoring}, and [USC-HAD]{https://sipi.usc.edu/had/}. By running its data preprocess code involving deal, divide_domain, and raw_aug_loader, we can obtain the dataset with the specified target and remain rate. The data file should be put in the `data` folder, such as `data/uschad/uschad_crosssubject_rawaug_rate0.2_t0_seed1_scalernorm.pkl`. Here, we only use the preprocessed original data for training.
+We employ the identical preprocessing method as outlined in the work by [Qin et al DDLearn](https://github.com/microsoft/robustlearn/tree/main/ddlearn) on three publicly available HAR datasets, namely [DSADS](https://archive.ics.uci.edu/dataset/256/daily+and+sports+activities), [PAMAP2](https://archive.ics.uci.edu/dataset/231/pamap2+physical+activity+monitoring), and [USC-HAD](https://sipi.usc.edu/had/). By running its data preprocess code involving deal, divide_domain, and raw_aug_loader, we can obtain the dataset with the specified target and remain rate. The data file should be put in the `data` folder, such as `data/uschad/uschad_crosssubject_rawaug_rate0.2_t0_seed1_scalernorm.pkl`. Here, we only use the preprocessed original data for training.
 
 
 
