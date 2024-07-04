@@ -1,6 +1,6 @@
 # DI2SDiff
 
-This repo is the official implementation of  "Diverse Intra- and Inter-Domain Activity Style Fusion for Cross-Person Generalization in Activity Recognition" accepted by [KDD 2024 research track.]
+This repo is the official implementation of  "Diverse Intra- and Inter-Domain Activity Style Fusion for Cross-Person Generalization in Activity Recognition" accepted by [KDD 2024 research track.] ([Paper](https://arxiv.org/abs/2406.04609))
 
 
 
@@ -67,6 +67,12 @@ We would like to thank the pioneer  work including: [DDLearn](https://github.com
 
 # Citation
 
+@article{zhang2024diverse,
+  title={Diverse Intra-and Inter-Domain Activity Style Fusion for Cross-Person Generalization in Activity Recognition},
+  author={Zhang, Junru and Feng, Lang and Liu, Zhidan and Wu, Yuhan and He, Yang and Dong, Yabo and Xu, Duanqing},
+  journal={arXiv preprint arXiv:2406.04609},
+  year={2024}
+}
 
 # Contact
 
