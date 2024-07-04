@@ -39,8 +39,7 @@ testuser = {}
 testuser['seed'] = args.seed
 testuser['name'] = data_type+"_tar_"+str(target) +'_rm_'+str(remain_rate)+'seed_'+str(testuser['seed'])
 
-conditioner = os.getcwd()+os.path.join('/Style_conditioner/conditioner_pth/', data_type+str(remain_rate)+f"_seed_{testuser['seed']}"+'/')
-
+conditioner = os.getcwd()+os.path.join('/Style_conditioner/conditioner_pth/')
 testuser['conditioner'] =  conditioner + data_type+"_tar_"+str(target) +'_rm_'+str(remain_rate)+'seed_'+str(testuser['seed'])+'-'+f'ckp_last-dl.pt'
 train_loader, valid_loader, target_loader,testuser['n_class']  = get_acthar(args, data_type ,target , batch_size =64, remain_rate = remain_rate, seed = testuser['seed'])
 source_loaders= train_loader
