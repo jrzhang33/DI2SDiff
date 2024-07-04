@@ -91,7 +91,7 @@ def Trainer_ft(model, temporal_contr_model, model_optimizer, temp_cont_optimizer
         if valid_acc > best_acc:
             best_acc = valid_acc
             chkpoint = {'model_state_dict': model.state_dict(), 'temporal_contr_model_state_dict': temporal_contr_model.state_dict()}
-            torch.save(chkpoint, os.path.join(experiment_log_dir, testuser+'-'+f'ckp_last-dl.pt'))
+            torch.save(chkpoint, os.path.join(os.getcwd()+'/Style_conditioner/conditioner_pth/', testuser+'-'+f'ckp_last-dl.pt'))
         logger.debug(f'\nEpoch : {epoch}\n'
                      f'Train Loss     : {train_loss:.4f}\t | \tTrain Accuracy     : {train_acc:2.4f}\n'
                      f'Valid Loss     : {valid_loss:.4f}\t | \tValid Accuracy     : {valid_acc:2.4f}')
@@ -99,7 +99,7 @@ def Trainer_ft(model, temporal_contr_model, model_optimizer, temp_cont_optimizer
     os.makedirs(os.path.join(experiment_log_dir, "saved_models"), exist_ok=True)
     print("Best:", best_acc)
     chkpoint = {'model_state_dict': model.state_dict(), 'temporal_contr_model_state_dict': temporal_contr_model.state_dict()}
-    torch.save(chkpoint, os.path.join(experiment_log_dir, testuser+'-'+f'ckp_last-dl.pt'))
+    torch.save(chkpoint, os.path.join(os.getcwd()+'/Style_conditioner/conditioner_pth/', testuser+'-'+f'ckp_last-dl.pt'))
 
     if training_mode != "self_supervised":  # no need to run the evaluation for self-supervised mode.
         # evaluate on the test set
@@ -116,7 +116,7 @@ def Trainer(model, temporal_contr_model, model_optimizer, temp_cont_optimizer, t
     criterion = nn.CrossEntropyLoss()
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(model_optimizer, 'min')
 
-    for epoch in range(1, config.num_epoch):
+    for epoch in range(0, config.num_epoch):
         train_loss, train_acc = model_train(model, temporal_contr_model, model_optimizer, temp_cont_optimizer, criterion, train_dl, config, device, training_mode)
         valid_loss, valid_acc, _, _ = model_evaluate(model, temporal_contr_model, valid_dl, device, training_mode)
 
@@ -124,8 +124,8 @@ def Trainer(model, temporal_contr_model, model_optimizer, temp_cont_optimizer, t
                      f'Train Loss     : {train_loss:.4f}\t | \tTrain Accuracy     : {train_acc:2.4f}\n'
                     )
         chkpoint = {'model_state_dict': model.state_dict(), 'temporal_contr_model_state_dict': temporal_contr_model.state_dict()}
-        torch.save(chkpoint, os.path.join(experiment_log_dir, testuser+'-'+f'ckp_last-dl.pt'))
-        print(os.path.join(experiment_log_dir,  testuser, f'ckp_last-dl.pt'))
+        torch.save(chkpoint, os.path.join(os.getcwd()+'/Style_conditioner/conditioner_pth/', testuser+'-'+f'ckp_last-dl.pt'))
+        print(os.path.join(os.getcwd()+'/Style_conditioner/conditioner_pth/', testuser+'-'+f'ckp_last-dl.pt'))
 
     if training_mode != "self_supervised":  # no need to run the evaluation for self-supervised mode.
         # evaluate on the test set
