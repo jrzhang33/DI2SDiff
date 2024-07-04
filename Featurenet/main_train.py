@@ -97,7 +97,7 @@ args_data = get_args(dataset,args)
 # for attr, value in vars(args_data).items():
 #     setattr(args, attr, value)
 
-conditioner = os.getcwd()+os.path.join('/Style_conditioner/conditioner_pth/', data_type+str(remain_rate)+f"_seed_{testuser['seed']}"+'/')
+conditioner = os.getcwd()+os.path.join('/Style_conditioner/conditioner_pth/')
 
 # Load data
 train_loader, valid_loader, target_loader,testuser['n_class'] = get_acthar(args,data_type ,target , batch_size =64,remain_rate = testuser['remain_data'], seed = testuser['seed'])
