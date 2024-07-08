@@ -288,7 +288,7 @@ def train_diversity(model, args, train_loader,valid_loader, test_loader,testuser
         print('====1.Fine grained====')
         loss_list = ['class']    
         print_row(['epoch']+[item+'_loss' for item in loss_list], colwidth=15)
-        for step in range(args.step2):
+        for step in range(args.step1):
             for batch_no,  minibatch in enumerate(train_loader, start=1): #new_domain
                 x=  minibatch[0]
                 x = x[:,:,:,-testuser['length']:]
