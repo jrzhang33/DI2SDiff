@@ -66,14 +66,15 @@ We would like to thank the pioneer  work including: [DDLearn](https://github.com
 
 
 # Citation
-
-@article{zhang2024diverse,
-  title={Diverse Intra-and Inter-Domain Activity Style Fusion for Cross-Person Generalization in Activity Recognition},
-  author={Zhang, Junru and Feng, Lang and Liu, Zhidan and Wu, Yuhan and He, Yang and Dong, Yabo and Xu, Duanqing},
-  journal={arXiv preprint arXiv:2406.04609},
+If you found this work useful for you, please consider citing it.
+```
+@article{zhang2024diverse, 
+  title={Diverse Intra-and Inter-Domain Activity Style Fusion for Cross-Person Generalization in Activity Recognition}, 
+  author={Zhang, Junru and Feng, Lang and Liu, Zhidan and Wu, Yuhan and He, Yang and Dong, Yabo and Xu, Duanqing}, 
+  journal={arXiv preprint arXiv:2406.04609}, 
   year={2024}
 }
-
+```
 # Contact
 
 junruzhang@zju.edu.cn
