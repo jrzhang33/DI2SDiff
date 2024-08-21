@@ -133,16 +133,7 @@ def train_diversity(model, args, train_loader,valid_loader, test_loader,testuser
     log_file_name = os.getcwd()+os.path.join('/Featurenet/logs/', testuser['name']+f"logs_{nowtime.strftime('%d_%m_%Y_%H_%M_%S')}.log")
     logger = _logger(log_file_name)
 
-    # # Log the parameters
-    # logger.debug(f"args.lr_decay_cls_f = {args.lr_decay_cls_f}")
-    # logger.debug(f"args.lr_decay_cls = {args.lr_decay_cls}")
-    # logger.debug(f"args.lr_decay_ori = {args.lr_decay_ori}")
-    # logger.debug(f"args.lr_decay_ori_f = {args.lr_decay_ori_f}")
-    # logger.debug(f"args.lr_decay1 = {args.lr_decay1}")
-    # logger.debug(f"args.lr_decay2 = {args.lr_decay2}")
-    # logger.debug(testuser['diff'])
-    # logger.debug(testuser['newdata'])
-    # logger.debug(testuser['remain_data'])
+
     algorithm_class = alg.get_algorithm_class()
     algorithm = algorithm_class(args).cuda()
     opto = get_optimizer(algorithm, args, nettype='step-2')
@@ -346,27 +337,7 @@ def train_diversity(model, args, train_loader,valid_loader, test_loader,testuser
                 syn_accnum = syn_accnum +  np.sum(y_pred[:start_ori] == y_true[:start_ori])
                 
 
-                # if epoch == drop_epoch: 
-                #     print("drop!")
-                #     mask = torch.ones (train_x.shape[0], dtype=torch.bool)
-                #    # index_worse = index_worse[-choselen:]
-                #     mask[index_worse] = False
-                #     new_x = train_x[mask]
-                #     new_y = train_y[mask]
-                #     new_d = train_d[mask]
-                #     new_x_data.append(new_x)
-                #     new_y_data.append(new_y)
-                #     new_d_data.append(new_d)
-                #     # print(index_worse)
-                #     print(new_x.shape)
-
-            # if epoch == drop_epoch:
-            #     new_x_data = torch.cat(new_x_data)
-            #     new_y_data = torch.cat(new_y_data)
-            #     new_d_data = torch.cat(new_d_data)
-            #     generate_dataset = DataDataset(x= new_x_data.cpu(), label = new_y_data.cpu(), alabel = new_d_data.cpu(), dataset = testuser['dataset'])
-            #     train_loader = DataLoader(dataset=generate_dataset , batch_size=args.batch_size, shuffle=True, pin_memory=True)
-                
+ 
             print("Step 3:", loss_list)
             if use_slr:
                 scheduler.step()
@@ -425,7 +396,7 @@ def train_diversity(model, args, train_loader,valid_loader, test_loader,testuser
         avg_loss_valid = 0
         algorithm_copy = deepcopy(algorithm)
         algorithm_copy.eval()
-        for batch_no,  minibatch in enumerate(test_loader, start=1): #new_domain
+        for batch_no,  minibatch in enumerate(test_loader, start=1):
             x=  minibatch[0]
             y = minibatch[1]
             x, y=x.to(device), y.long().to(device)
@@ -445,33 +416,12 @@ def train_diversity(model, args, train_loader,valid_loader, test_loader,testuser
             acc += np.sum(y_pred == y_true)
             num += len(y_pred)
         test_acc = acc/num
-        if test_acc > best_test_acc:
-            best_test_acc = test_acc
-            best_epoch = epoch
-            best_test_str = "{:.2f}".format(best_test_acc)
-        # print(batch_no, "!!Test acc:", acc/num)
-        # logger.debug("%s ENV", testuser['name'])
-        # logger.debug("%s Test acc: %s", batch_no, acc/num)
         if flag:
             best_acc = acc/num
         logger.debug("%s ENV", testuser['name'])
-        # logger.debug(f"Best Test Accuracy: {best_test_acc:.5f}, epoch: {best_epoch}")
-        # logger.debug(f"Original Accuracy: {ori_acc:.5f}, Diff Accuracy: {diff_acc:.5f}")
-        logger.debug(f"Train Accuracy: {train_acc:.5f}, Valid Accuracy: {valid_acc:.5f}, Test Accuracy: {test_acc:.5f}, Best Accuracy: {best_acc:.5f}, Best Test Accuracy: {best_test_acc:.5f}, Best epoch{best_epoch:.1f}")
-        # print(testuser['newdata'])
-        # logger.debug("%d Drop_epoch",drop_epoch)
-        # logger.debug("%.5f Drop_log",drop_log)
-        # logger.debug(f"args.lr_decay_cls_f = {args.lr_decay_cls_f}")
-        # logger.debug(f"args.lr_decay_cls = {args.lr_decay_cls}")
-        # logger.debug(f"args.lr_decay_ori = {args.lr_decay_ori}")
-        # logger.debug(f"args.lr_decay_ori_f = {args.lr_decay_ori_f}")
-        # logger.debug(f"args.lr_decay1 = {args.lr_decay1}")
-        # logger.debug(f"args.lr_decay2 = {args.lr_decay2}")
 
-        # logger.debug(f"args.step1 = {args.step1}")
-        # logger.debug(f"args.step2 = {args.step2}")
-        # logger.debug(f"args.step3 = {args.step3}")
-        # logger.debug(f"args.lr = {args.lr}")
+        logger.debug(f"Train Accuracy: {train_acc:.5f}, Valid Accuracy: {valid_acc:.5f}, Test Accuracy: {test_acc:.5f}, Best Accuracy: {best_acc:.5f}, Best epoch{best_epoch:.1f}")
+
         if stop > 80:
             print("early stop!")
             break
