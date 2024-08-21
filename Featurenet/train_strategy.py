@@ -1,5 +1,3 @@
-# Copyright (c) Microsoft Corporation..save
-# Licensed under the MIT License.
 import time
 from alg.opt import *
 from alg import alg, modelopera
