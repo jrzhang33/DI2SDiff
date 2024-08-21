@@ -18,28 +18,6 @@ sys.path.append('./')
 
 
 
-# parser = argparse.ArgumentParser()
-
-# ######################## Model parameters ########################
-# home_dir = os.getcwd()
-# parser.add_argument('--experiment_description', default='Exp1', type=str,
-#                     help='Experiment Description')
-# parser.add_argument('--run_description', default='run1', type=str,
-#                     help='Experiment Description')
-# parser.add_argument('--seed', default=123, type=int,
-#                     help='seed value')
-# parser.add_argument('--training_mode', default='self_supervised', type=str,
-#                     help='Modes of choice: random_init, supervised, self_supervised, fine_tune, train_linear,rl')
-# parser.add_argument('--selected_dataset', default='dsads', type=str,
-#                     help='Dataset of choice:pamap,uschad,dsads')
-# parser.add_argument('--logs_save_dir', default='experiments_logs', type=str,
-#                     help='saving directory')
-# parser.add_argument('--device', default='cuda', type=str,
-#                     help='cpu or cuda')
-# parser.add_argument('--home_path', default=home_dir, type=str,
-#                     help='Project home directory')
-
-
 
 import importlib
 def one_hot(y, num_classes):
