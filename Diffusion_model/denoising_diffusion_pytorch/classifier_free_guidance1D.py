@@ -22,53 +22,6 @@ ModelPrediction =  namedtuple('ModelPrediction', ['pred_noise', 'pred_x_start'])
 import os
 import matplotlib.pyplot as plt
 import numpy as np
-# helpers functions
-# def plotdiff(rep, times):
-#     batch_size, channels, length = rep.size()
-#     folder_name = './stept1'
-#     os.makedirs(folder_name, exist_ok=True)
-#     # Visualize rep
-#     for i in range(2):
-#         for j in range(1):
-#             # Get single channel data
-#             channel_data = rep[i, j, :]
-
-#             # Create plot
-#             plt.plot(channel_data.cpu())
-#             plt.title(f'rep Channel {j} Batch {i} Step_{times}')
-
-#             # Save plot as PNG
-#             file_name = f'rep_channel_{j}_batch_{i}_Step_{times}.png'
-#             plt.savefig(os.path.join(folder_name, file_name))
-
-
-#             # Clear current plot
-#             plt.clf()
-#             channel_data_np = channel_data.cpu().numpy()
-
-#             channel_data_fft = np.fft.fft(channel_data_np)
-
-#             # Calculate frequency values
-#             freq = np.fft.fftfreq(len(channel_data_np))
-
-#             # Create plot for frequency spectrum
-#             plt.plot(freq, np.abs(channel_data_fft))
-#             plt.title(f'rep Channel {j} Batch {i} Step_{times} Frequency Spectrum')
-#             positive_freq = freq[:len(freq)//2]  # Consider only positive frequencies
-#             positive_spectrum = np.abs(channel_data_fft)[:len(freq)//2]  # Magnitudes of positive frequencies
-
-#             # Calculate the centroid
-#             centroid = np.sum(positive_freq * positive_spectrum) / np.sum(positive_spectrum)
-
-#             # Calculate the energy
-#             energy = np.sum(np.square(positive_spectrum))
-#             print("Rep: ")    
-#             print("REP:Centroid:", centroid)
-#             print("REP: Energy:", energy)
-#             # Save plot as PNG in the folder
-#             file_name = f'rep_channel_{j}_batch_{i}_Step_{times}_freq.png'
-#             plt.savefig(os.path.join(folder_name, file_name))
-#             plt.clf()
 
 
 def exists(x):
