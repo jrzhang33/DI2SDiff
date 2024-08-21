@@ -63,17 +63,6 @@ class FeatureNet(Algorithm):
         all_preds_prob = F.softmax(all_preds, dim=1)
         index_list = None
 
-        # max_entropy, _ = torch.max(all_preds_prob , dim=1)
-
-        # real_entropy = all_preds_prob [torch.arange(all_preds_prob .size(0)), all_y]
-        # diff = max_entropy - real_entropy
-
-        # indices = torch.nonzero(diff >  drop_log).squeeze()
-        # index_list = indices.tolist()
-        # if isinstance(index_list, list):
-        #     pass
-        # else:
-        #     index_list = [indices.cpu().item()]
 
         return {'total': loss.item(), 'class': classifier_loss.item()},all_preds, index_list, all_z
 
