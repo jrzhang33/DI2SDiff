@@ -22,53 +22,7 @@ ModelPrediction =  namedtuple('ModelPrediction', ['pred_noise', 'pred_x_start'])
 import os
 import matplotlib.pyplot as plt
 import numpy as np
-# helpers functions
-# def plotdiff(rep, times):
-#     batch_size, channels, length = rep.size()
-#     folder_name = './stept1'
-#     os.makedirs(folder_name, exist_ok=True)
-#     # Visualize rep
-#     for i in range(2):
-#         for j in range(1):
-#             # Get single channel data
-#             channel_data = rep[i, j, :]
 
-#             # Create plot
-#             plt.plot(channel_data.cpu())
-#             plt.title(f'rep Channel {j} Batch {i} Step_{times}')
-
-#             # Save plot as PNG
-#             file_name = f'rep_channel_{j}_batch_{i}_Step_{times}.png'
-#             plt.savefig(os.path.join(folder_name, file_name))
-
-
-#             # Clear current plot
-#             plt.clf()
-#             channel_data_np = channel_data.cpu().numpy()
-
-#             channel_data_fft = np.fft.fft(channel_data_np)
-
-#             # Calculate frequency values
-#             freq = np.fft.fftfreq(len(channel_data_np))
-
-#             # Create plot for frequency spectrum
-#             plt.plot(freq, np.abs(channel_data_fft))
-#             plt.title(f'rep Channel {j} Batch {i} Step_{times} Frequency Spectrum')
-#             positive_freq = freq[:len(freq)//2]  # Consider only positive frequencies
-#             positive_spectrum = np.abs(channel_data_fft)[:len(freq)//2]  # Magnitudes of positive frequencies
-
-#             # Calculate the centroid
-#             centroid = np.sum(positive_freq * positive_spectrum) / np.sum(positive_spectrum)
-
-#             # Calculate the energy
-#             energy = np.sum(np.square(positive_spectrum))
-#             print("Rep: ")    
-#             print("REP:Centroid:", centroid)
-#             print("REP: Energy:", energy)
-#             # Save plot as PNG in the folder
-#             file_name = f'rep_channel_{j}_batch_{i}_Step_{times}_freq.png'
-#             plt.savefig(os.path.join(folder_name, file_name))
-#             plt.clf()
 
 
 def exists(x):
@@ -966,43 +920,4 @@ class GaussianDiffusion1Dcond(nn.Module):
         # img = normalize_to_neg_one_to_one(img)
         return self.p_losses(img, t, *args, **kwargs)
 
-# example
 
-# if __name__ == '__main__':
-#     num_classes = 10
-
-#     model = Unet(
-#         dim = 64,
-#         dim_mults = (1, 2, 4, 8),
-#         num_classes = num_classes,
-#         cond_drop_prob = 0.5
-#     )
-
-#     diffusion = GaussianDiffusion1D_cond(
-#         model,
-#         image_size = 128,
-#         timesteps = 1000
-#     ).cuda()
-
-#     training_images = torch.randn(8, 3, 128, 128).cuda() # images are normalized from 0 to 1
-#     image_classes = torch.randint(0, num_classes, (8,)).cuda()    # say 10 classes
-
-#     loss = diffusion(training_images, classes = image_classes)
-#     loss.backward()
-
-#     # do above for many steps
-
-#     sampled_images = diffusion.sample(
-#         classes = image_classes,
-#         cond_scale = 6.                # condition scaling, anything greater than 1 strengthens the classifier free guidance. reportedly 3-8 is good empirically
-#     )
-
-#     sampled_images.shape # (8, 3, 128, 128)
-
-#     # interpolation
-
-#     interpolate_out = diffusion.interpolate(
-#         training_images[:1],
-#         training_images[:1],
-#         image_classes[:1]
-#     )
