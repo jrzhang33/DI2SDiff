@@ -418,7 +418,7 @@ def train_diversity(model, args, train_loader,valid_loader, test_loader,testuser
             best_acc = acc/num
         logger.debug("%s ENV", testuser['name'])
 
-        logger.debug(f"Train Accuracy: {train_acc:.5f}, Valid Accuracy: {valid_acc:.5f}, Test Accuracy: {test_acc:.5f}, Best Accuracy: {best_acc:.5f}, Best epoch{best_epoch:.1f}")
+        logger.debug(f"Train Accuracy: {train_acc:.5f}, Valid Accuracy: {valid_acc:.5f}, Test Accuracy: {test_acc:.5f}, Best Accuracy: {best_acc:.5f}")
 
         if stop > 80:
             print("early stop!")
