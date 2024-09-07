@@ -25,7 +25,7 @@ Please download the dataset and run the [preprocessing code](https://github.com/
 
 
 # How to Run
-We provide the code for training the style conditioner, diffusion model, and feature network, which should be trained sequentially during each epoch. The commands for training all tasks with 20% of the USC-HAD, PAMAP, and DASADS datasets are provided below.
+We provide the code for training the style conditioner, diffusion model, and feature network, which should be trained sequentially during each epoch. The commands for training all tasks with 20% of the USC-HAD, PAMAP, and DSADS datasets are provided below.
 
 #### USC-HAD 20% training data
 
